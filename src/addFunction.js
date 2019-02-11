@@ -1,3 +1,20 @@
 module.exports = addends => {
-  return 0;
+  if (addends === '') {
+    return 0;
+  }
+
+  const addendArray = addends.split(',');
+
+  const numberedAddend = addendArray.map(addend => {
+    if (!Number(addend)) {
+      throw new Error('The argument must be a number!');
+    }
+    return Number(addend);
+  });
+
+  const addendSum = numberedAddend.reduce((previousValue, currentValue) => {
+    return previousValue + currentValue;
+  });
+
+  return addendSum;
 };
