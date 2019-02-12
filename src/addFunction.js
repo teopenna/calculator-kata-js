@@ -3,7 +3,7 @@ module.exports = addends => {
     return 0;
   }
 
-  const addendArray = addends.split(',');
+  const addendArray = addends.split(/[,\n]/);
 
   const numberedAddend = addendArray.map(addend => {
     if (!Number(addend)) {

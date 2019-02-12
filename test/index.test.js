@@ -1,7 +1,7 @@
 const addFunction = require('../src/addFunction');
 
 describe('Add Function', () => {
-  test('If an empty string is passed shoud return 0', () => {
+  test('If an empty string is passed should return 0', () => {
     // Arrange
     const expectedResul = 0;
     // Act
@@ -29,12 +29,31 @@ describe('Add Function', () => {
     expect(actualResult).toEqual(expectedResul);
   });
 
-  test('Should return sum of 2 comma separated numbers', () => {
+  test('Comma separated numbers should be added', () => {
     // Arrange
     const expectedResul = 7;
     // Act
     const actualResult = addFunction('3,4');
     // Assert
     expect(actualResult).toEqual(expectedResul);
+  });
+
+  test('Comma separated or line separated numbers should be added', () => {
+    // Arrange
+    const expectedResul = 6;
+    // Act
+    const actualResult = addFunction('1\n2,3');
+    // Assert
+    expect(actualResult).toEqual(expectedResul);
+  });
+
+  test('Between each number a single separator should be used', () => {
+    // Arrange
+    // Act
+    const addWithMultipleSeparators = () => {
+      addFunction('1,\n');
+    };
+    // Assert
+    expect(addWithMultipleSeparators).toThrow(/number/);
   });
 });
